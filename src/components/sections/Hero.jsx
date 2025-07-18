@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Sphere from "../Sphere";
-import ShinyText from "../../blocks/TextAnimations/ShinyText/ShinyText";
-
+import BackgroundCircles from "../BackgroundCircles";
 
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,18 +21,27 @@ const Hero = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      
-      
+      {/* Background decorative circles */}
+      <BackgroundCircles
+        showCircles={true}
+        animationDelay={0.5}
+        opacity={0.5}
+      />
+
       {/* Animated Sphere */}
-      <Sphere isHovered={isHovered} />
+      <div
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                      sm:-translate-y-[60%] md:-translate-y-[65%] lg:-translate-y-[70%]"
+      >
+        <Sphere isHovered={isHovered} />
+      </div>
 
       {/* Content Container */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
-        {/* Spacer to push content to center-bottom */}
-        <div className="flex-1"></div>
+        {/* Dynamic spacer that adapts to screen size */}
+        <div className="flex-1 min-h-[10vh] sm:min-h-[15vh] md:min-h-[20vh] lg:min-h-[25vh]"></div>
 
         {/* Main Title */}
-
         <motion.h1
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 
                      font-light text-gray-800 tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] 
@@ -85,8 +93,8 @@ const Hero = () => {
           ></span>
         </motion.button>
 
-        {/* Spacer for bottom spacing */}
-        <div className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36"></div>
+        {/* Adaptive bottom spacer */}
+        <div className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32"></div>
       </div>
 
       {/* Scroll Indicator */}
@@ -109,19 +117,6 @@ const Hero = () => {
           transition={{ duration: 1.5, repeat: Infinity }}
         />
       </motion.div>
-
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        {/* Subtle gradient orbs */}
-        <div
-          className="absolute top-20 right-20 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 
-                        bg-gradient-to-br from-cyan-100 to-transparent rounded-full blur-3xl opacity-30"
-        />
-        <div
-          className="absolute bottom-20 left-20 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 
-                        bg-gradient-to-br from-green-100 to-transparent rounded-full blur-3xl opacity-20"
-        />
-      </div>
     </motion.section>
   );
 };
