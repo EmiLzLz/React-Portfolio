@@ -1,6 +1,6 @@
 import React from 'react';
 import TiltWrapper from './TiltWrapper';
-import { motion } from "framer-motion";
+
 
 const ServiceCard = ({ icon: Icon, title, description, delay = 0 }) => (
   <TiltWrapper

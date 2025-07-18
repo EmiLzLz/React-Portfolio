@@ -27,8 +27,7 @@ const TiltWrapper = ({ children, className = "", style = {}, delay = 0 }) => {
   const handleMouseLeave = () => {
     const card = cardRef.current;
     if (card) {
-      card.style.transform =
-        "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+      card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
     }
   };
 
@@ -37,11 +36,14 @@ const TiltWrapper = ({ children, className = "", style = {}, delay = 0 }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`transition-transform duration-300 ease-out will-change-transform ${className}`}
+      className={`transition-transform duration-300 ease-out will-change-transform h-full w-full ${className}`}
       style={{
         ...style,
         animationDelay: `${delay}ms`,
         transformStyle: "preserve-3d",
+        // CLAVE: Asegurar que no interfiera con grid
+        position: "relative",
+        zIndex: 1
       }}
     >
       {children}
