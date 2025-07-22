@@ -5,7 +5,9 @@ function Sphere({isHovered}) {
   return (
     <motion.div
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-      style={{ marginTop: "-25vh" }}
+      style={{ 
+        marginTop: window.innerWidth > 768 ? "-15vh" : "0"
+      }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
@@ -21,22 +23,26 @@ function Sphere({isHovered}) {
           scale: { duration: 0.3, ease: "easeInOut" },
         }}
       >
-        {/* Outer ring - Centered */}
+        {/* Outer ring - Más grande en móviles */}
         <motion.div
-          className="absolute w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 
-                       rounded-full border-2 border-cyan-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          className="absolute rounded-full border-2 border-cyan-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: window.innerWidth <= 768 ? '120vw' : '20rem',
+            height: window.innerWidth <= 768 ? '120vw' : '20rem',
+          }}
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         />
 
-        {/* Main sphere - Centered */}
+        {/* Main sphere - Más grande en móviles */}
         <motion.div
-          className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 
-                       rounded-full relative overflow-hidden
+          className="rounded-full relative overflow-hidden
                        bg-gradient-to-br from-cyan-100 via-green-50 to-cyan-200
                        shadow-2xl shadow-cyan-200/50"
           style={{
+            width: window.innerWidth <= 768 ? '100vw' : '18rem',
+            height: window.innerWidth <= 768 ? '100vw' : '18rem',
             background:
               "radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.3), rgba(6, 182, 212, 0.2), rgba(165, 243, 252, 0.8))",
             boxShadow:
@@ -46,96 +52,167 @@ function Sphere({isHovered}) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.7 }}
         >
-          {/* Inner highlight */}
+          {/* Inner highlight - Responsivo */}
           <div
-            className="absolute top-6 left-6 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 
-                         rounded-full bg-white opacity-20 blur-sm"
+            className="absolute rounded-full bg-white opacity-20 blur-sm"
+            style={{
+              top: window.innerWidth <= 768 ? '2rem' : '1.5rem',
+              left: window.innerWidth <= 768 ? '2rem' : '1.5rem',
+              width: window.innerWidth <= 768 ? '10vw' : '3rem',
+              height: window.innerWidth <= 768 ? '10vw' : '3rem',
+            }}
           />
 
           {/* Scattered dot pattern in center */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
-              {/* Scattered dots with random-looking positions */}
+            <div 
+              className="relative"
+              style={{
+                width: window.innerWidth <= 768 ? '15vw' : '6rem',
+                height: window.innerWidth <= 768 ? '15vw' : '6rem',
+              }}
+            >
+              {/* Scattered dots - Más grandes en móviles */}
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-60"
-                style={{ top: "20%", left: "30%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-60"
+                style={{ 
+                  top: "20%", 
+                  left: "30%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.8, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-40"
-                style={{ top: "45%", left: "15%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-40"
+                style={{ 
+                  top: "45%", 
+                  left: "15%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.85, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-70"
-                style={{ top: "35%", left: "50%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-70"
+                style={{ 
+                  top: "35%", 
+                  left: "50%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.9, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-50"
-                style={{ top: "60%", left: "35%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-50"
+                style={{ 
+                  top: "60%", 
+                  left: "35%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.95, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-60"
-                style={{ top: "25%", left: "70%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-60"
+                style={{ 
+                  top: "25%", 
+                  left: "70%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-40"
-                style={{ top: "50%", left: "80%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-40"
+                style={{ 
+                  top: "50%", 
+                  left: "80%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.05, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-70"
-                style={{ top: "75%", left: "60%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-70"
+                style={{ 
+                  top: "75%", 
+                  left: "60%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.1, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-50"
-                style={{ top: "80%", left: "25%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-50"
+                style={{ 
+                  top: "80%", 
+                  left: "25%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.15, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-60"
-                style={{ top: "10%", left: "55%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-60"
+                style={{ 
+                  top: "10%", 
+                  left: "55%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.2, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-40"
-                style={{ top: "65%", left: "45%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-40"
+                style={{ 
+                  top: "65%", 
+                  left: "45%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.25, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-70"
-                style={{ top: "40%", left: "85%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-70"
+                style={{ 
+                  top: "40%", 
+                  left: "85%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.3, ease: "easeOut" }}
               />
               <motion.div
-                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full opacity-50"
-                style={{ top: "15%", left: "80%" }}
+                className="absolute bg-cyan-400 rounded-full opacity-50"
+                style={{ 
+                  top: "15%", 
+                  left: "80%",
+                  width: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                  height: window.innerWidth <= 768 ? '1.5vw' : '0.5rem',
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3, delay: 1.35, ease: "easeOut" }}
@@ -157,10 +234,13 @@ function Sphere({isHovered}) {
           />
         </motion.div>
 
-        {/* Pulsing outer glow - Centered */}
+        {/* Pulsing outer glow - Más grande en móviles */}
         <motion.div
-          className="absolute w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 
-                       rounded-full border border-cyan-300 opacity-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          className="absolute rounded-full border border-cyan-300 opacity-30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: window.innerWidth <= 768 ? '120vw' : '20rem',
+            height: window.innerWidth <= 768 ? '120vw' : '20rem',
+          }}
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.3, 0.1, 0.3],

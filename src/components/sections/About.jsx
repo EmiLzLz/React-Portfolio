@@ -15,7 +15,7 @@ const WhatIDo = () => {
       <ParticlesBackground parentRef={sectionRef} />
 
       {/* Contenido principal */}
-      <div className="relative z-10 max-w-10/12 mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-10/12 mx-auto md:px-4 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-800 tracking-[0.25em] mb-6">
             WHAT I DO
@@ -26,7 +26,7 @@ const WhatIDo = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-0 sm:px-4 ">
           <ServiceCard
             icon={Code}
             title="FRONTEND DEVELOPMENT"

@@ -43,7 +43,7 @@ const WorkCard = ({
       </div>
 
       {/* Botones de acción */}
-      <div className="flex gap-3">
+      <div className="flex flex-col md:flex-row gap-3">
         <motion.button
           className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-100 hover:text-white transition-all duration-500 ease-out

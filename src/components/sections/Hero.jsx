@@ -30,16 +30,15 @@ const Hero = () => {
 
       {/* Animated Sphere */}
       <div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      sm:-translate-y-[60%] md:-translate-y-[65%] lg:-translate-y-[70%]"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%]"
       >
         <Sphere isHovered={isHovered} />
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center sm:justify-start px-4 sm:px-6 md:px-8">
         {/* Dynamic spacer that adapts to screen size */}
-        <div className="flex-1 min-h-[10vh] sm:min-h-[15vh] md:min-h-[20vh] lg:min-h-[25vh]"></div>
+        <div className="hidden sm:block flex-1 min-h-[15vh] md:min-h-[20vh] lg:min-h-[25vh]"></div>
 
         {/* Main Title */}
         <motion.h1
@@ -94,7 +93,7 @@ const Hero = () => {
         </motion.button>
 
         {/* Adaptive bottom spacer */}
-        <div className="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32"></div>
+        <div className="hidden sm:block h-24 md:h-28 lg:h-32 xl:h-36"></div>
       </div>
 
       {/* Scroll Indicator */}
