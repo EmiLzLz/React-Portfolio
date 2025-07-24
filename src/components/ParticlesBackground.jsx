@@ -3,104 +3,76 @@ import React, { useEffect, useState } from "react";
 const ParticlesBackground = ({ parentRef }) => {
   const [particles, setParticles] = useState([]);
 
-  // Crear partículas al inicio
+  // Crear partículas al inicio (reducido de 35 a 12)
   useEffect(() => {
-    const total = 35;
-    const created = Array.from({ length: total }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      originalX: Math.random() * 100,
-      originalY: Math.random() * 100,
-      size: Math.random() * 120 + 30,
-      opacity: Math.random() * 0.35 + 0.05,
-      gradient:
-        Math.random() > 0.5
-          ? "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.08) 70%, transparent 100%)"
-          : "radial-gradient(circle, rgba(34, 197, 94, 0.3) 0%, rgba(34, 197, 94, 0.08) 70%, transparent 100%)",
-      isMoving: false,
-      targetX: Math.random() * 100,
-      targetY: Math.random() * 100,
-      animationProgress: 0,
-    }));
-
-    created.forEach((p) => {
-      p.originalX = p.x;
-      p.originalY = p.y;
-      p.targetX = p.x;
-      p.targetY = p.y;
+    const total = 12;
+    
+    // Crear una distribución más uniforme usando una grilla invisible
+    const cols = 4;
+    const rows = 3;
+    const created = Array.from({ length: total }, (_, i) => {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      
+      // Calcular posición base en la grilla
+      const baseX = (col + 0.5) * (100 / cols);
+      const baseY = (row + 0.5) * (100 / rows);
+      
+      // Añadir variación aleatoria dentro de cada celda
+      const variationX = (Math.random() - 0.5) * (80 / cols); // 80% del ancho de celda
+      const variationY = (Math.random() - 0.5) * (80 / rows); // 80% del alto de celda
+      
+      // Asegurar que no se salgan de los límites
+      const finalX = Math.max(5, Math.min(95, baseX + variationX));
+      const finalY = Math.max(5, Math.min(95, baseY + variationY));
+      
+      return {
+        id: i,
+        x: finalX,
+        y: finalY,
+        size: Math.random() * 100 + 40, // Tamaño base un poco más grande
+        opacity: Math.random() * 0.25 + 0.1, // Opacidad más visible
+        gradient:
+          Math.random() > 0.5
+            ? "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 70%, transparent 100%)"
+            : "radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, rgba(34, 197, 94, 0.1) 70%, transparent 100%)",
+        pulseSpeed: Math.random() * 0.02 + 0.01, // Velocidad de pulso individual
+        pulseOffset: Math.random() * Math.PI * 2, // Offset para que no pulsen al mismo tiempo
+        floatSpeed: Math.random() * 0.005 + 0.002, // Velocidad de flotación
+        floatRange: Math.random() * 3 + 1, // Rango de flotación
+        time: 0,
+      };
     });
 
     setParticles(created);
   }, []);
 
-  // Movimiento de partículas cuando se mueve el mouse
+  // Animación suave y continua
   useEffect(() => {
     let animationId;
 
     const animate = () => {
       setParticles((prev) =>
         prev.map((p) => {
-          if (p.isMoving) {
-            // Animar hacia el objetivo
-            const progress = p.animationProgress + 0.02; // Velocidad de animación
+          const newTime = p.time + 1;
+          
+          // Efecto de pulso suave en la opacidad y tamaño
+          const pulseValue = Math.sin((newTime * p.pulseSpeed) + p.pulseOffset) * 0.5 + 0.5;
+          const pulsedOpacity = p.opacity * (0.7 + pulseValue * 0.3);
+          const pulsedSize = p.size * (0.95 + pulseValue * 0.1);
+          
+          // Movimiento de flotación muy sutil
+          const floatX = p.x + Math.sin(newTime * p.floatSpeed) * p.floatRange * 0.3;
+          const floatY = p.y + Math.cos(newTime * p.floatSpeed * 0.8) * p.floatRange * 0.2;
 
-            if (progress >= 1) {
-              // Movimiento completado, generar nuevo objetivo o regresar
-              const shouldContinue = Math.random() > 0.3; // 70% chance de continuar moviéndose
-
-              if (shouldContinue) {
-                // Generar nuevo objetivo aleatorio
-                const newTargetX = Math.max(
-                  5,
-                  Math.min(95, p.x + (Math.random() - 0.5) * 40)
-                );
-                const newTargetY = Math.max(
-                  5,
-                  Math.min(95, p.y + (Math.random() - 0.5) * 40)
-                );
-
-                return {
-                  ...p,
-                  targetX: newTargetX,
-                  targetY: newTargetY,
-                  animationProgress: 0,
-                };
-              } else {
-                // Regresar a posición original
-                return {
-                  ...p,
-                  isMoving: false,
-                  targetX: p.originalX,
-                  targetY: p.originalY,
-                  animationProgress: 0,
-                };
-              }
-            }
-
-            // Interpolación suave hacia el objetivo
-            const easeProgress = 1 - Math.pow(1 - progress, 3); // Easing out cubic
-            const newX = p.x + (p.targetX - p.x) * easeProgress * 0.1;
-            const newY = p.y + (p.targetY - p.y) * easeProgress * 0.1;
-
-            return {
-              ...p,
-              x: newX,
-              y: newY,
-              animationProgress: progress,
-            };
-          } else {
-            // Regresar lentamente a la posición original
-            const returnSpeed = 0.02;
-            const newX = p.x + (p.originalX - p.x) * returnSpeed;
-            const newY = p.y + (p.originalY - p.y) * returnSpeed;
-
-            return {
-              ...p,
-              x: newX,
-              y: newY,
-            };
-          }
+          return {
+            ...p,
+            time: newTime,
+            currentOpacity: pulsedOpacity,
+            currentSize: pulsedSize,
+            currentX: floatX,
+            currentY: floatY,
+          };
         })
       );
 
@@ -109,77 +81,29 @@ const ParticlesBackground = ({ parentRef }) => {
 
     animationId = requestAnimationFrame(animate);
 
-    const handleMouseMove = (e) => {
-      if (!parentRef.current) return;
-
-      const rect = parentRef.current.getBoundingClientRect();
-      const mouseX = ((e.clientX - rect.left) / rect.width) * 100;
-      const mouseY = ((e.clientY - rect.top) / rect.height) * 100;
-
-      setParticles((prev) =>
-        prev.map((p) => {
-          const dx = mouseX - p.x;
-          const dy = mouseY - p.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 50 && !p.isMoving) {
-            // Activar partícula con movimiento aleatorio
-            const randomAngle = Math.random() * Math.PI * 2;
-            const randomDistance = Math.random() * 25 + 15; // Entre 15 y 40 unidades
-
-            const targetX = Math.max(
-              5,
-              Math.min(95, p.x + Math.cos(randomAngle) * randomDistance)
-            );
-            const targetY = Math.max(
-              5,
-              Math.min(95, p.y + Math.sin(randomAngle) * randomDistance)
-            );
-
-            return {
-              ...p,
-              isMoving: true,
-              targetX,
-              targetY,
-              animationProgress: 0,
-            };
-          }
-
-          return p;
-        })
-      );
-    };
-
-    const section = parentRef.current;
-    if (section) {
-      section.addEventListener("mousemove", handleMouseMove);
-    }
-
     return () => {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      if (section) {
-        section.removeEventListener("mousemove", handleMouseMove);
-      }
     };
-  }, [parentRef]);
+  }, []);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-0">
       {particles.map((p) => (
         <div
           key={p.id}
-          className="absolute rounded-full transition-all duration-100 ease-out"
+          className="absolute rounded-full"
           style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: `${p.size}px`,
-            height: `${p.size}px`,
+            left: `${p.currentX || p.x}%`,
+            top: `${p.currentY || p.y}%`,
+            width: `${p.currentSize || p.size}px`,
+            height: `${p.currentSize || p.size}px`,
             background: p.gradient,
-            opacity: p.opacity,
-            filter: "blur(3px)",
+            opacity: p.currentOpacity || p.opacity,
+            filter: "blur(2px)",
             transform: "translate(-50%, -50%)",
+            willChange: "opacity, transform", // Optimización para GPU
           }}
         />
       ))}
