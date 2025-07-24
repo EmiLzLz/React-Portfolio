@@ -89,7 +89,7 @@ const WorkSection = () => {
   ];
 
   return (
-    <div className="min-h-screen overflow-hidden py-20 px-4 relative">
+    <div className="min-h-screen overflow-hidden py-20 px-4 relative ">
       {/* Background inmersivo animado */}
       <AnimatedBg mousePosition={mousePosition} />
 

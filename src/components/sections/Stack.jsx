@@ -2,12 +2,10 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import TechBubble from "../TechBubble";
 
-// Componente principal Stack
 const Stack = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
 
-  // Datos de las tecnologías - más dispersas por todo el canvas
+  // Datos de las tecnologías
   const techStack = [
     {
       name: "Framer Motion",
@@ -91,9 +89,8 @@ const Stack = () => {
     },
   ];
 
+  // Solo el evento del mouse, sin mounted state innecesario
   useEffect(() => {
-    setMounted(true);
-
     const handleMouseMove = (e) => {
       const rect = e.currentTarget.getBoundingClientRect();
       setMousePosition({
@@ -109,49 +106,50 @@ const Stack = () => {
     }
   }, []);
 
-  // Variantes de animación para el header
-  const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: "easeOut" },
-    },
-  };
-
-  // Variantes para el botón
-  const buttonVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, delay: 1.8, ease: "easeOut" },
-    },
-  };
-
   return (
     <div id="stack-container" className="relative py-20 sm:py-32">
       <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
-        {/* Section header */}
+        {/* Header simple con animación básica */}
         <motion.div
-          variants={headerVariants}
-          initial="hidden"
-          animate={mounted ? "visible" : "hidden"}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
           className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-7xl text-dark mb-4 font-extralight tracking-widest">
             TECH STACK
           </h2>
-          <div className="w-24 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mb-8"></div>
+          <motion.div
+            className="flex justify-center mb-6"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="relative">
+              <motion.div
+                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                  scaleX: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
+              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
+            </div>
+          </motion.div>
           <p className="text-lg sm:text-xl text-slate-600 font-light tracking-wide max-w-3xl mx-auto leading-relaxed">
             The carefully curated tools that transform ideas into digital
             reality.
           </p>
         </motion.div>
 
-        {/* Scattered Minimalist Tech Layout */}
-        <div className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-6 min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] overflow-hidden">
-          {/* Tech bubbles */}
+        {/* Container de las burbujas */}
+        <div className="relative w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-6 min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[800px] overflow-hidden">
           {techStack.map((tech, index) => (
             <TechBubble
               key={tech.name}
@@ -162,11 +160,11 @@ const Stack = () => {
           ))}
         </div>
 
-        {/* Bottom section */}
+        {/* Bottom section simplificado */}
         <motion.div
-          variants={buttonVariants}
-          initial="hidden"
-          animate={mounted ? "visible" : "hidden"}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.8 }}
           className="text-center mt-10"
         >
           <div className="max-w-2xl mx-auto mb-8">
@@ -175,14 +173,12 @@ const Stack = () => {
               ecosystem of development excellence.
             </p>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-3 bg-transparent border border-slate-300 rounded-full text-slate-700 font-light tracking-wide hover:border-emerald-400 transition-all duration-300 overflow-hidden"
-          >
+
+          {/* Botón simplificado - solo hover con Tailwind */}
+          <button className="group px-8 py-3 bg-transparent border border-slate-300 rounded-full text-slate-700 font-light tracking-wide hover:border-emerald-400 hover:scale-105 transition-all duration-300 overflow-hidden">
             <span className="relative z-10">Start a Project</span>
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-cyan-400/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </div>
