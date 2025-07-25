@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
+import AnimatedBg from "../AnimatedBg";
+import { useMousePosition } from "../../hooks/useMousePosition";
 
 const Contact = () => {
+  const mousePosition = useMousePosition();
+
   return (
     <div className="bg-slate-900 text-white py-20 sm:py-32 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AnimatedBg mousePosition={mousePosition} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative ">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

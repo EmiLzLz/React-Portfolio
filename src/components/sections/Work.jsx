@@ -4,22 +4,11 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import AnimatedBg from "../AnimatedBg";
 import TiltWrapper from "../TiltWrapper";
+import { useMousePosition } from "../../hooks/useMousePosition";
 
 // Componente principal de la sección de trabajo
 const WorkSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  const mousePosition = useMousePosition();
 
   // Datos de ejemplo para los proyectos
   const projects = [
@@ -191,7 +180,7 @@ const WorkSection = () => {
           {/* Segunda tarjeta destacada - Mismo tamaño que la primera */}
           <TiltWrapper className="md:col-span-3 lg:col-span-3">
             <WorkCard {...projects[6]} className=" h-full" />
-          </TiltWrapper> 
+          </TiltWrapper>
 
           {/* Resto de proyectos en formato estándar - Solo si hay más de 7 */}
           {projects.slice(7).map((project, index) => (
