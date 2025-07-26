@@ -1,7 +1,6 @@
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
-import TiltWrapper from "./TiltWrapper";
 
 const WorkCard = ({
   stack,
@@ -9,15 +8,20 @@ const WorkCard = ({
   description,
   repoUrl,
   viewUrl,
+  image,
   className = "",
 }) => {
   return (
     <div
       className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-6 hover:bg-slate-800/70 transition-all duration-300 ${className}`}
     >
-      {/* Icono del proyecto */}
-      <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg mb-4 flex items-center justify-center">
-        <div className="w-6 h-6 bg-white rounded-sm"></div>
+      {/* Imagen del proyecto */}
+      <div className="w-full h-48 mb-4 overflow-hidden rounded-lg">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+        />
       </div>
 
       {/* Título */}
@@ -44,46 +48,52 @@ const WorkCard = ({
 
       {/* Botones de acción */}
       <div className="flex flex-col md:flex-row gap-3">
-        <motion.button
-          className="group relative cursor-pointer overflow-hidden px-6 py-2 
+        {viewUrl && (
+          <motion.button
+            className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-100 hover:text-white transition-all duration-500 ease-out
              border border-slate-400 hover:border-cyan-400 rounded-full bg-transparent flex-1"
-          whileHover={{ y: -2, scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => window.open(viewUrl, "_blank")}
-        >
-          <span className="relative z-10 text-sm font-medium">View Project</span>
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => window.open(viewUrl, "_blank")}
+          >
+            <span className="relative z-10 text-sm font-medium">
+              View Project
+            </span>
 
-          <span
-            className="absolute inset-0 z-0 bg-gradient-to-r from-cyan-400 to-green-400 
+            <span
+              className="absolute inset-0 z-0 bg-gradient-to-r from-cyan-400 to-green-400 
                    scale-x-0 group-hover:scale-x-100 origin-left transition-transform 
                    duration-500 ease-out rounded-full"
-          ></span>
+            ></span>
 
-          <ExternalLink className="inline-block w-4 h-4 ml-2 relative z-10" />
-        </motion.button>
-        
-        <motion.button
-          className="group relative cursor-pointer overflow-hidden px-6 py-2 
+            <ExternalLink className="inline-block w-4 h-4 ml-2 relative z-10" />
+          </motion.button>
+        )}
+
+        {repoUrl && (
+          <motion.button
+            className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-300 hover:text-white transition-all duration-500 ease-out
              border border-slate-500 hover:border-slate-400 rounded-full bg-transparent"
-          whileHover={{ y: -2, scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => window.open(repoUrl, "_blank")}
-        >
-          <span className="relative z-10 text-sm font-medium">GitHub</span>
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => window.open(repoUrl, "_blank")}
+          >
+            <span className="relative z-10 text-sm font-medium">GitHub</span>
 
-          <span
-            className="absolute inset-0 z-0 bg-gradient-to-r from-slate-600 to-slate-500 
+            <span
+              className="absolute inset-0 z-0 bg-gradient-to-r from-slate-600 to-slate-500 
                    scale-x-0 group-hover:scale-x-100 origin-left transition-transform 
                    duration-500 ease-out rounded-full"
-          ></span>
+            ></span>
 
-          <Github className="inline-block w-4 h-4 ml-2 relative z-10" />
-        </motion.button>
+            <Github className="inline-block w-4 h-4 ml-2 relative z-10" />
+          </motion.button>
+        )}
       </div>
     </div>
   );
 };
 
-export default WorkCard
+export default WorkCard;

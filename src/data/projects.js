@@ -10,6 +10,15 @@ import sSearcherImg from "../assets/images/seriesSearcher.webp";
 
 export const projects = [
   {
+    stack: ["React", "Tailwind CSS", "React Router"],
+    title: "PERSONAL DASHBOARD",
+    description:
+      "Modern React dashboard application showcasing advanced frontend development skills. Built with Vite, Tailwind CSS, and React Router, featuring dynamic theming, persistent data storage, interactive charts (Recharts), notes management with search functionality, and comprehensive testing suite. Demonstrates modular architecture and custom hooks implementation.",
+    repoUrl: "https://github.com/EmiLzLz/personal-Dashboard",
+    viewUrl: "https://emilzlz.github.io/personal-Dashboard",
+    image: personalDashImg,
+  },
+  {
     stack: ["Wordpress", "Elementor"],
     title: "ADPMX Website",
     description:
@@ -47,24 +56,6 @@ export const projects = [
     image: pemImg,
   },
   {
-    stack: ["React", "Spring Boot", "MySQL"],
-    title: "CHECKFRONT REPORT SYSTEM",
-    description:
-      "Full-stack reporting system demo built for a client who wanted to visualize their Checkfront booking platform data. The demo uses Excel file uploads to simulate data processing and generate interactive charts and reports. Built with Spring Boot backend (JWT authentication, JPA, MySQL) and React frontend using a Creative Tim template, customized with Tailwind CSS, dynamic charts, and dark mode. Demonstrates the proposed dashboard functionality using sample data.",
-    repoUrl: "https://github.com/EmiLzLz/excel-report-dashboard",
-    viewUrl: "",
-    image: reportsImg,
-  },
-  {
-    stack: ["React", "Tailwind CSS", "React Router"],
-    title: "PERSONAL DASHBOARD",
-    description:
-      "Modern React dashboard application showcasing advanced frontend development skills. Built with Vite, Tailwind CSS, and React Router, featuring dynamic theming, persistent data storage, interactive charts (Recharts), notes management with search functionality, and comprehensive testing suite. Demonstrates modular architecture and custom hooks implementation.",
-    repoUrl: "https://github.com/EmiLzLz/personal-Dashboard",
-    viewUrl: "https://emilzlz.github.io/personal-Dashboard",
-    image: personalDashImg,
-  },
-  {
     stack: ["React", "Tailwind CSS"],
     title: "TV Series Searcher",
     description:
@@ -72,6 +63,15 @@ export const projects = [
     repoUrl: "https://github.com/EmiLzLz/seriesSearcher",
     viewUrl: "https://emilzlz.github.io/seriesSearcher/",
     image: sSearcherImg,
+  },
+  {
+    stack: ["React", "Spring Boot", "MySQL"],
+    title: "CHECKFRONT REPORT SYSTEM",
+    description:
+      "Full-stack reporting system demo built for a client who wanted to visualize their Checkfront booking platform data. The demo uses Excel file uploads to simulate data processing and generate interactive charts and reports. Built with Spring Boot backend (JWT authentication, JPA, MySQL) and React frontend using a Creative Tim template, customized with Tailwind CSS, dynamic charts, and dark mode. Demonstrates the proposed dashboard functionality using sample data.",
+    repoUrl: "https://github.com/EmiLzLz/excel-report-dashboard",
+    viewUrl: "",
+    image: reportsImg,
   },
   {
     stack: ["React", "Tailwind CSS", "MySQL", "Socket.io", "Node.js"],
