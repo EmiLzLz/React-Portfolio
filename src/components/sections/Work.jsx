@@ -5,77 +5,11 @@ import { useEffect, useState } from "react";
 import AnimatedBg from "../AnimatedBg";
 import TiltWrapper from "../TiltWrapper";
 import { useMousePosition } from "../../hooks/useMousePosition";
+import { projects } from "../../data/projects";
 
 // Componente principal de la sección de trabajo
 const WorkSection = () => {
   const mousePosition = useMousePosition();
-
-  // Datos de ejemplo para los proyectos
-  const projects = [
-    {
-      stack: ["Next.js", "TypeScript", "Stripe", "Prisma", "Tailwind", "AWS"],
-      title: "E-Commerce Platform",
-      description:
-        "A comprehensive, modern e-commerce solution built with Next.js and TypeScript. Features include real-time inventory management, secure payment processing with Stripe, advanced analytics dashboard, and AI-powered product recommendations. The platform handles over 10,000 daily transactions with 99.9% uptime.",
-      repoUrl: "https://github.com/user/ecommerce",
-      viewUrl: "https://ecommerce-demo.com",
-      image: "/images/ecommerce-project.jpg",
-    },
-    {
-      stack: ["React", "Storybook", "Tailwind", "Figma", "Jest", "Chromatic"],
-      title: "Design System & UI Kit",
-      description:
-        "Comprehensive design system with 150+ components, extensive documentation, and seamless Figma integration. Built for enterprise scalability with full accessibility compliance (WCAG 2.1 AA) and multi-framework support. Features automated testing, visual regression testing, and supports React, Vue, and Angular implementations.",
-      repoUrl: "https://github.com/user/design-system",
-      viewUrl: "https://design-system-demo.com",
-      image: "/images/design-system-project.jpg",
-    },
-    {
-      stack: ["Vue.js", "Node.js", "Express", "MongoDB", "Socket.io"],
-      title: "Real-time Chat Application",
-      description:
-        "Modern chat application with real-time messaging, file sharing, and video calls. Built with Vue.js frontend and Node.js backend, featuring user authentication, group chats, and message encryption.",
-      repoUrl: "https://github.com/user/chat-app",
-      viewUrl: "https://chat-demo.com",
-      image: "/images/chat-app-project.jpg",
-    },
-    {
-      stack: ["React Native", "Firebase", "Redux", "TypeScript"],
-      title: "Mobile Fitness Tracker",
-      description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features. Includes offline functionality and health kit integration.",
-      repoUrl: "https://github.com/user/fitness-app",
-      viewUrl: "https://fitness-demo.com",
-      image: "/images/fitness-app-project.jpg",
-    },
-    {
-      stack: ["React Native", "Firebase", "Redux", "TypeScript"],
-      title: "Mobile Fitness Tracker",
-      description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features. Includes offline functionality and health kit integration.",
-      repoUrl: "https://github.com/user/fitness-app",
-      viewUrl: "https://fitness-demo.com",
-      image: "/images/fitness-app-project.jpg",
-    },
-    {
-      stack: ["React Native", "Firebase", "Redux", "TypeScript"],
-      title: "Mobile Fitness Tracker",
-      description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features. Includes offline functionality and health kit integration.",
-      repoUrl: "https://github.com/user/fitness-app",
-      viewUrl: "https://fitness-demo.com",
-      image: "/images/fitness-app-project.jpg",
-    },
-    {
-      stack: ["React Native", "Firebase", "Redux", "TypeScript"],
-      title: "Mobile Fitness Tracker",
-      description:
-        "Cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features. Includes offline functionality and health kit integration.",
-      repoUrl: "https://github.com/user/fitness-app",
-      viewUrl: "https://fitness-demo.com",
-      image: "/images/fitness-app-project.jpg",
-    },
-  ];
 
   return (
     <div className="min-h-screen overflow-hidden py-20 px-4 relative ">

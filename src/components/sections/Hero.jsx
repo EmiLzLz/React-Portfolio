@@ -95,27 +95,6 @@ const Hero = () => {
         {/* Adaptive bottom spacer */}
         <div className="hidden sm:block h-24 md:h-28 lg:h-32 xl:h-36"></div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-12 left-1/2 
-                   transform -translate-x-1/2 flex flex-col items-center space-y-2 sm:space-y-3 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2.4 }}
-      >
-        <span
-          className="text-xs sm:text-sm tracking-widest font-light"
-          style={{ color: "#93a2b8" }}
-        >
-          SCROLL
-        </span>
-        <motion.div
-          className="w-px h-6 sm:h-8 md:h-10 bg-gray-400"
-          animate={{ scaleY: [1, 0.5, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-      </motion.div>
     </motion.section>
   );
 };
