@@ -80,51 +80,62 @@ const WorkSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Bento Grid Layout con animación staggered */}
+        {/* Bento Grid Layout optimizado */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-16 "
+          className="space-y-6 mb-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          {/* Primera tarjeta destacada - Mismo tamaño que la segunda */}
-          <TiltWrapper className="md:col-span-3 lg:col-span-3">
-            <WorkCard {...projects[0]} className=" h-full" />
-          </TiltWrapper>
-
-          {/* Dos tarjetas pequeñas a la derecha */}
-          <TiltWrapper className="md:col-span-2 lg:col-span-2">
-            <WorkCard {...projects[1]} className=" h-full" />
-          </TiltWrapper>
-          <TiltWrapper className="md:col-span-2 lg:col-span-2">
-            <WorkCard {...projects[2]} className=" h-full" />
-          </TiltWrapper>
-
-          {/* Tres tarjetas medianas en fila */}
-          <TiltWrapper className="md:col-span-2 lg:col-span-2">
-            <WorkCard {...projects[3]} className=" h-full" />
-          </TiltWrapper>
-          <TiltWrapper className="md:col-span-2 lg:col-span-2">
-            <WorkCard {...projects[4]} className=" h-full" />
-          </TiltWrapper>
-          <TiltWrapper className="md:col-span-2 lg:col-span-2">
-            <WorkCard {...projects[5]} className=" h-full" />
-          </TiltWrapper>
-
-          {/* Segunda tarjeta destacada - Mismo tamaño que la primera */}
-          <TiltWrapper className="md:col-span-3 lg:col-span-3">
-            <WorkCard {...projects[6]} className=" h-full" />
-          </TiltWrapper>
-
-          {/* Resto de proyectos en formato estándar - Solo si hay más de 7 */}
-          {projects.slice(7).map((project, index) => (
-            <TiltWrapper
-              key={index + 7}
-              className="md:col-span-2 lg:col-span-2"
-            >
-              <WorkCard {...project} />
+          {/* Primera fila - Solo la primera tarjeta principal */}
+          <div className="grid grid-cols-1">
+            <TiltWrapper>
+              <WorkCard {...projects[0]} className="h-full xl:h-[520px] [&_img]:h-56" />
             </TiltWrapper>
-          ))}
+          </div>
+
+          {/* Segunda fila - 3 proyectos secundarios */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <TiltWrapper>
+              <WorkCard {...projects[1]} className="h-full" />
+            </TiltWrapper>
+            <TiltWrapper>
+              <WorkCard {...projects[2]} className="h-full" />
+            </TiltWrapper>
+            <TiltWrapper>
+              <WorkCard {...projects[3]} className="h-full" />
+            </TiltWrapper>
+          </div>
+
+          {/* Tercera fila - 2 proyectos medianos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <TiltWrapper>
+              <WorkCard {...projects[4]} className="h-full" />
+            </TiltWrapper>
+            <TiltWrapper>
+              <WorkCard {...projects[5]} className="h-full" />
+            </TiltWrapper>
+          </div>
+
+          {/* Cuarta fila - Solo la segunda tarjeta principal */}
+          {projects[6] && (
+            <div className="grid grid-cols-1">
+              <TiltWrapper>
+                <WorkCard {...projects[6]} className="h-full xl:h-[520px] [&_img]:h-56" />
+              </TiltWrapper>
+            </div>
+          )}
+
+          {/* Resto de proyectos en formato estándar */}
+          {projects.slice(7).length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.slice(7).map((project, index) => (
+                <TiltWrapper key={index + 7}>
+                  <WorkCard {...project} className="h-full" />
+                </TiltWrapper>
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
