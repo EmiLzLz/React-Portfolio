@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
-import AnimatedBg from "../AnimatedBg";
+import AnimatedBg from "../backgrounds/AnimatedBg";
 import { useMousePosition } from "../../hooks/useMousePosition";
-import AnimatedLine from "../AnimatedLine";
+import AnimatedLine from "../effectsAndObjects/AnimatedLine";
 
 const Contact = () => {
   const mousePosition = useMousePosition();

@@ -1,10 +1,10 @@
-import WorkCard from "../WorkCard";
+import WorkCard from "../cards/WorkCard";
 import { motion } from "framer-motion";
-import AnimatedBg from "../AnimatedBg";
-import TiltWrapper from "../TiltWrapper";
+import AnimatedBg from "../backgrounds/AnimatedBg";
+import TiltWrapper from "../effectsAndObjects/TiltWrapper";
 import { useMousePosition } from "../../hooks/useMousePosition";
 import { projects } from "../../data/projects";
-import AnimatedLine from "../AnimatedLine";
+import AnimatedLine from "../effectsAndObjects/AnimatedLine";
 
 // Componente principal de la sección de trabajo
 const WorkSection = () => {

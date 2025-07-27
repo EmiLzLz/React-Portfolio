@@ -1,14 +1,13 @@
 import { Code, Palette, Lightbulb } from "lucide-react";
-import ServiceCard from "../ServiceCard";
-import ParticlesBackground from "../ParticlesBackground";
+import ServiceCard from "../cards/ServiceCard";
+import ParticlesBackground from "../backgrounds/ParticlesBackground";
 import { motion } from "framer-motion";
-import AnimatedLine from "../AnimatedLine";
+import AnimatedLine from "../effectsAndObjects/AnimatedLine";
 
 const WhatIDo = ({ onSectionChange }) => {
 
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden py-12 md:py-20"
     >
       {/* Fondo de partículas */}

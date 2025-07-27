@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import TechCard from "../TechCard";
-import ParticlesBackground from "../ParticlesBackground";
-import { getTechsByCategory } from "../../data/techData"; // Ajusta la ruta según tu estructura
-import AnimatedLine from "../AnimatedLine";
+import TechCard from "../cards/TechCard";
+import ParticlesBackground from "../backgrounds/ParticlesBackground";
+import { getTechsByCategory } from "../../data/techData";
+import AnimatedLine from "../effectsAndObjects/AnimatedLine";
 
 const Stack = () => {
 

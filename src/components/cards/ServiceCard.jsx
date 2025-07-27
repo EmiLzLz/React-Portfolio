@@ -1,5 +1,5 @@
 import React from 'react';
-import TiltWrapper from './TiltWrapper';
+import TiltWrapper from '../effectsAndObjects/TiltWrapper';
 
 
 const ServiceCard = ({ icon: Icon, title, description, delay = 0 }) => (

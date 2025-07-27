@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Sphere from "../Sphere";
-import BackgroundCircles from "../BackgroundCircles";
+import Sphere from "../effectsAndObjects/Sphere";
+import BackgroundCircles from "../backgrounds/BackgroundCircles";
 
 const Hero = ({ onSectionChange }) => {
   const [isHovered, setIsHovered] = useState(false);
