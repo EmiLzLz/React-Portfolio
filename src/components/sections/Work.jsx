@@ -1,7 +1,5 @@
 import WorkCard from "../WorkCard";
-import { ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import AnimatedBg from "../AnimatedBg";
 import TiltWrapper from "../TiltWrapper";
 import { useMousePosition } from "../../hooks/useMousePosition";
@@ -46,17 +44,6 @@ const WorkSection = () => {
             challenges. From interactive dashboards to e-commerce solutions,
             here's what I've built using modern web technologies.
           </motion.p>
-
-          {/* <motion.div
-            className="mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <span className="text-sm text-slate-400 tracking-wider uppercase">
-              Featured Work
-            </span>
-          </motion.div> */}
         </motion.div>
 
         {/* Bento Grid Layout optimizado */}

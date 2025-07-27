@@ -52,12 +52,12 @@ const WorkCard = ({
           <motion.a
             className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-100 hover:text-white transition-all duration-500 ease-out
-             border border-slate-400 hover:border-cyan-400 rounded-full bg-transparent flex-1 inline-block"
+             border border-slate-400 hover:border-cyan-400 rounded-full bg-transparent flex-1 inline-block text-center"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => window.open(viewUrl, "_blank")}
           >
-            <span className="relative z-10 text-sm font-medium">
+            <span className="relative z-10 text-sm font-medium text-center">
               View Project
             </span>
 
