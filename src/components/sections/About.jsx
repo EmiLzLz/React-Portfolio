@@ -8,7 +8,6 @@ const WhatIDo = ({ onSectionChange }) => {
 
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden py-12 md:py-20"
     >
       {/* Fondo de partículas */}

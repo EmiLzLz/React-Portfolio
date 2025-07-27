@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Sphere from "../Sphere";
 import BackgroundCircles from "../BackgroundCircles";
+import { Model } from "../Orb";
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 const Hero = ({ onSectionChange }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -29,8 +32,30 @@ const Hero = ({ onSectionChange }) => {
       />
 
       {/* Animated Sphere */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%]">
-        <Sphere isHovered={isHovered} />
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+        <div className="w-full h-full max-w-2xl">
+          <Canvas 
+            camera={{ position: [30, 35, 50], fov: 60 }}
+            style={{ background: 'transparent' }}
+          >
+            <Environment preset="city" />
+            <ambientLight intensity={0.4} />
+            <directionalLight position={[10, 10, 5]} intensity={0.8} />
+            <pointLight position={[-10, -10, -5]} intensity={0.6} />
+            
+            {/* Escalamos el modelo - la espiral es más grande verticalmente */}
+            <Model scale={[0.8, 0.8, 0.8]} position={[0, -40, 0]} />
+            
+            <OrbitControls 
+              enableZoom={true}
+              enableRotate={true}
+              enablePan={false}
+              autoRotate={true}
+              autoRotateSpeed={1}
+              target={[0,15, 0]}
+            />
+          </Canvas>
+        </div>
       </div>
 
       {/* Content Container */}
