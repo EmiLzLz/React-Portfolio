@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ParticlesBackground = ({ parentRef }) => {
+const ParticlesBackground = () => {
   const [particles, setParticles] = useState([]);
 
   // Crear partículas al inicio (reducido de 35 a 12)

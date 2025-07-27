@@ -2,14 +2,13 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedBg from "../AnimatedBg";
 import { useMousePosition } from "../../hooks/useMousePosition";
+import AnimatedLine from "../AnimatedLine";
 
 const Contact = () => {
   const mousePosition = useMousePosition();
 
   return (
-    <div
-      className="bg-slate-900 text-white py-20 sm:py-32 min-h-screen"
-    >
+    <div className="bg-slate-900 text-white py-20 sm:py-32 min-h-screen">
       <AnimatedBg mousePosition={mousePosition} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative ">
         {/* Header */}
@@ -24,29 +23,7 @@ const Contact = () => {
             LET'S CONNECT
           </h2>
           {/* Línea verde con efecto de luz animado */}
-          <motion.div
-            className="flex justify-center mb-6"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scaleX: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
-            </div>
-          </motion.div>
+          <AnimatedLine />
           <p className="text-lg sm:text-xl text-slate-400 font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
             Ready to take your business online or improve your current site?
             Let's talk about what you need and how I can help make it happen.

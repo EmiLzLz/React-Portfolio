@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
 import { Code, Palette, Lightbulb } from "lucide-react";
 import ServiceCard from "../ServiceCard";
 import ParticlesBackground from "../ParticlesBackground";
 import { motion } from "framer-motion";
+import AnimatedLine from "../AnimatedLine";
 
 const WhatIDo = ({ onSectionChange }) => {
-  const sectionRef = useRef(null);
 
   return (
     <section
@@ -13,7 +12,7 @@ const WhatIDo = ({ onSectionChange }) => {
       className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden py-12 md:py-20"
     >
       {/* Fondo de partículas */}
-      <ParticlesBackground parentRef={sectionRef} />
+      <ParticlesBackground />
 
       {/* Contenido principal */}
       <div className="relative z-10 max-w-10/12 mx-auto md:px-4 lg:px-8">
@@ -21,30 +20,7 @@ const WhatIDo = ({ onSectionChange }) => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-800 tracking-[0.25em] mb-6">
             WHAT I DO
           </h2>
-          {/* Línea verde con efecto de luz animado */}
-          <motion.div
-            className="flex justify-center mb-6"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scaleX: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
-            </div>
-          </motion.div>
+          <AnimatedLine/>
           <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
             I build modern, functional websites that help local businesses grow
             digitally. From design to implementation, I focus on creating

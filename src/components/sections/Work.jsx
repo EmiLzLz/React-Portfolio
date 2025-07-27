@@ -6,6 +6,7 @@ import AnimatedBg from "../AnimatedBg";
 import TiltWrapper from "../TiltWrapper";
 import { useMousePosition } from "../../hooks/useMousePosition";
 import { projects } from "../../data/projects";
+import AnimatedLine from "../AnimatedLine";
 
 // Componente principal de la sección de trabajo
 const WorkSection = () => {
@@ -34,30 +35,7 @@ const WorkSection = () => {
           </motion.h2>
 
           {/* Línea verde con efecto de luz animado */}
-          <motion.div
-            className="flex justify-center mb-6"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scaleX: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
-            </div>
-          </motion.div>
-
+          <AnimatedLine />
           <motion.p
             className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}

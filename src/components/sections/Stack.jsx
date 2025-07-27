@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
 import TechCard from "../TechCard";
 import ParticlesBackground from "../ParticlesBackground";
 import { getTechsByCategory } from "../../data/techData"; // Ajusta la ruta según tu estructura
+import AnimatedLine from "../AnimatedLine";
 
 const Stack = () => {
-  const sectionRef = useRef(null);
 
   // Obtener tecnologías filtradas
   const {
@@ -16,10 +15,9 @@ const Stack = () => {
 
   return (
     <section
-      ref={sectionRef}
       className="relative py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100"
     >
-      <ParticlesBackground parentRef={sectionRef} />
+      <ParticlesBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -33,29 +31,7 @@ const Stack = () => {
           </h2>
 
           {/* Línea decorativa animada */}
-          <motion.div
-            className="flex justify-center mb-6"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scaleX: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
-              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
-            </div>
-          </motion.div>
+          <AnimatedLine/>
 
           <p className="text-lg sm:text-xl text-slate-600 font-light tracking-wide max-w-3xl mx-auto leading-relaxed">
             The carefully curated tools that transform ideas into digital
