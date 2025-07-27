@@ -49,10 +49,10 @@ const WorkCard = ({
       {/* Botones de acción */}
       <div className="flex flex-col md:flex-row gap-3">
         {viewUrl && (
-          <motion.button
+          <motion.a
             className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-100 hover:text-white transition-all duration-500 ease-out
-             border border-slate-400 hover:border-cyan-400 rounded-full bg-transparent flex-1"
+             border border-slate-400 hover:border-cyan-400 rounded-full bg-transparent flex-1 inline-block"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => window.open(viewUrl, "_blank")}
@@ -68,14 +68,14 @@ const WorkCard = ({
             ></span>
 
             <ExternalLink className="inline-block w-4 h-4 ml-2 relative z-10" />
-          </motion.button>
+          </motion.a>
         )}
 
         {repoUrl && (
-          <motion.button
+          <motion.a
             className="group relative cursor-pointer overflow-hidden px-6 py-2 
              text-slate-300 hover:text-white transition-all duration-500 ease-out
-             border border-slate-500 hover:border-slate-400 rounded-full bg-transparent"
+             border border-slate-500 hover:border-slate-400 rounded-full bg-transparent inline-block"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => window.open(repoUrl, "_blank")}
@@ -89,7 +89,7 @@ const WorkCard = ({
             ></span>
 
             <Github className="inline-block w-4 h-4 ml-2 relative z-10" />
-          </motion.button>
+          </motion.a>
         )}
       </div>
     </div>

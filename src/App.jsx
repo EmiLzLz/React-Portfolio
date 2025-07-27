@@ -10,18 +10,18 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
-  
-  const sections = [
-    <Hero />, 
-    <WhatIDo />, 
-    <WorkSection />, 
-    <Stack />, 
-    <Contact />
-  ];
 
   const handleSectionChange = (index) => {
     setCurrentSection(index);
   };
+
+  const sections = [
+    <Hero onSectionChange={handleSectionChange} />,
+    <WhatIDo onSectionChange={handleSectionChange} />,
+    <WorkSection />,
+    <Stack />,
+    <Contact />,
+  ];
 
   return (
     <div className="h-screen overflow-hidden relative bg-black">
@@ -38,7 +38,7 @@ function App() {
         </motion.div>
       </AnimatePresence>
 
-      <Navigation 
+      <Navigation
         currentSection={currentSection}
         onSectionChange={handleSectionChange}
       />

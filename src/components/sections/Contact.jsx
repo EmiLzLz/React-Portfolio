@@ -7,7 +7,9 @@ const Contact = () => {
   const mousePosition = useMousePosition();
 
   return (
-    <div className="bg-slate-900 text-white py-20 sm:py-32 min-h-screen">
+    <div
+      className="bg-slate-900 text-white py-20 sm:py-32 min-h-screen"
+    >
       <AnimatedBg mousePosition={mousePosition} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative ">
         {/* Header */}
@@ -21,10 +23,33 @@ const Contact = () => {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.2em] mb-8">
             LET'S CONNECT
           </h2>
-          <div className="w-20 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mb-8"></div>
+          {/* Línea verde con efecto de luz animado */}
+          <motion.div
+            className="flex justify-center mb-6"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="relative">
+              <motion.div
+                className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent"
+                animate={{
+                  opacity: [0.5, 1, 0.5],
+                  scaleX: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent blur-sm"></div>
+              <div className="absolute inset-0 w-16 h-0.5 bg-gradient-to-r from-transparent via-green-300 to-transparent blur-md opacity-70"></div>
+            </div>
+          </motion.div>
           <p className="text-lg sm:text-xl text-slate-400 font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-            Ready to bring your vision to life? Let's start a conversation about
-            your next project.
+            Ready to take your business online or improve your current site?
+            Let's talk about what you need and how I can help make it happen.
           </p>
         </motion.div>
 
@@ -38,7 +63,7 @@ const Contact = () => {
         >
           {/* LinkedIn */}
           <motion.a
-            href="https://linkedin.com/in/tu-perfil" // Reemplaza con tu URL
+            href="https://www.linkedin.com/in/emiliano-lopez-lopez" // Reemplaza con tu URL
             target="_blank"
             rel="noopener noreferrer"
             className="group p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-blue-500 transition-all duration-300"
@@ -56,7 +81,7 @@ const Contact = () => {
 
           {/* GitHub */}
           <motion.a
-            href="https://github.com/tu-usuario" // Reemplaza con tu URL
+            href="https://github.com/EmiLzLz" // Reemplaza con tu URL
             target="_blank"
             rel="noopener noreferrer"
             className="group p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-emerald-500 transition-all duration-300"
@@ -74,7 +99,7 @@ const Contact = () => {
 
           {/* Email */}
           <motion.a
-            href="mailto:tu-email@gmail.com" // Reemplaza con tu email
+            href="mailto:emilliano.ll289@gmail.com" // Reemplaza con tu email
             className="group p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-cyan-400 transition-all duration-300"
             whileHover={{
               scale: 1.1,

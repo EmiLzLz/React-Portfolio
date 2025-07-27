@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Sphere from "../Sphere";
 import BackgroundCircles from "../BackgroundCircles";
 
-const Hero = () => {
+const Hero = ({ onSectionChange }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -29,9 +29,7 @@ const Hero = () => {
       />
 
       {/* Animated Sphere */}
-      <div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%]"
-      >
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[45%]">
         <Sphere isHovered={isHovered} />
       </div>
 
@@ -70,10 +68,19 @@ const Hero = () => {
         </motion.div>
 
         {/* CTA Button */}
-        <motion.button
+        <motion.div
+          onClick={() => onSectionChange(2)} // 2 es el índice de WorkSection
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              onSectionChange(2);
+            }
+          }}
           className="group relative cursor-pointer overflow-hidden px-8 py-3 sm:px-10 sm:py-4 md:px-12 md:py-4 
-                     text-gray-700 hover:text-white transition-all duration-300 
-                     border border-gray-300 hover:border-cyan-400 rounded-full bg-transparent"
+             text-gray-700 hover:text-white transition-all duration-300 
+             border border-gray-300 hover:border-cyan-400 rounded-full bg-transparent
+             inline-block"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2 }}
@@ -84,13 +91,12 @@ const Hero = () => {
             Explore My Work
           </span>
 
-          {/* Hover Background Animation */}
           <span
             className="absolute inset-0 z-0 bg-gradient-to-r from-cyan-400 to-green-400 
-                       scale-x-0 group-hover:scale-x-100 origin-left transition-transform 
-                       duration-500 ease-out rounded-full"
+               scale-x-0 group-hover:scale-x-100 origin-left transition-transform 
+               duration-500 ease-out rounded-full"
           ></span>
-        </motion.button>
+        </motion.div>
 
         {/* Adaptive bottom spacer */}
         <div className="hidden sm:block h-24 md:h-28 lg:h-32 xl:h-36"></div>

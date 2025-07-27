@@ -24,14 +24,14 @@ const WorkSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1
+          <motion.h2
             className="text-4xl md:text-7xl text-white mb-4 font-extralight tracking-widest"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             FEATURED PROJECTS
-          </motion.h1>
+          </motion.h2>
 
           {/* Línea verde con efecto de luz animado */}
           <motion.div
@@ -64,11 +64,12 @@ const WorkSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            A curated selection of projects that showcase the intersection of
-            creative design, technical excellence, and user-centered thinking.
+            Projects that showcase my approach to solving real business
+            challenges. From interactive dashboards to e-commerce solutions,
+            here's what I've built using modern web technologies.
           </motion.p>
 
-          <motion.div
+          {/* <motion.div
             className="mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -77,7 +78,7 @@ const WorkSection = () => {
             <span className="text-sm text-slate-400 tracking-wider uppercase">
               Featured Work
             </span>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Bento Grid Layout optimizado */}
@@ -90,7 +91,10 @@ const WorkSection = () => {
           {/* Primera fila - Solo la primera tarjeta principal */}
           <div className="grid grid-cols-1">
             <TiltWrapper>
-              <WorkCard {...projects[0]} className="h-full xl:h-[520px] [&_img]:h-56" />
+              <WorkCard
+                {...projects[0]}
+                className="h-full xl:h-[520px] [&_img]:h-56"
+              />
             </TiltWrapper>
           </div>
 
@@ -121,7 +125,10 @@ const WorkSection = () => {
           {projects[6] && (
             <div className="grid grid-cols-1">
               <TiltWrapper>
-                <WorkCard {...projects[6]} className="h-full xl:h-[520px] [&_img]:h-56" />
+                <WorkCard
+                  {...projects[6]}
+                  className="h-full xl:h-[520px] [&_img]:h-56"
+                />
               </TiltWrapper>
             </div>
           )}
