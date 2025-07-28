@@ -15,7 +15,7 @@ const Stack = () => {
 
   return (
     <section
-      className="relative py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100"
+      className="relative py-20 sm:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
       <ParticlesBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
