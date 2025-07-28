@@ -24,7 +24,7 @@ export const projects = [
     description:
       "Complete corporate website redesign. Created mockups in Figma and developed the new interface in WordPress using Elementor, improving user experience and modernizing the company's visual identity.",
     repoUrl: "",
-    viewUrl: "https://web.archive.org/web/20250726175802/https://adpmx.com/",
+    viewUrl: "https://adpmx.com/",
     image: adpmxImg,
   },
   {
@@ -33,7 +33,7 @@ export const projects = [
     description:
       "E-commerce for Mexican clothing brand specializing in skull designs. Developed the site in WordPress with Elementor and set up the store in Shopify with size and color variations. Includes responsive design and optimized shopping experience.",
     repoUrl: "",
-    viewUrl: "https://web.archive.org/web/20250726040228/https://calaveria.mx/",
+    viewUrl: "https://calaveria.mx/",
     image: calaveriaImg,
   },
   {
@@ -43,7 +43,7 @@ export const projects = [
       "Specialized aerospace news website with content management system. Adapted WordPress template for the aerospace sector and integrated Shopify store. Client regularly publishes content autonomously.",
     repoUrl: "",
     viewUrl:
-      "https://web.archive.org/web/20250726180330/https://mexicoaeroespacial.mx/",
+      "https://mexicoaeroespacial.mx/",
     image: maeImg,
   },
   {
@@ -52,7 +52,7 @@ export const projects = [
     description:
       "Economic indicators demo platform for the Government of Morelos. Developed in WordPress with JavaScript for interactive data visualization. Features dynamic charts system and visual mockup of the state's economic cycles concept.",
     repoUrl: "",
-    viewUrl: "https://web.archive.org/web/20250726181622/https://synapses.mx/",
+    viewUrl: "https://synapses.mx/",
     image: pemImg,
   },
   {
