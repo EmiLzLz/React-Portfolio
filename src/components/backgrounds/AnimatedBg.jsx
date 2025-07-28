@@ -31,58 +31,40 @@ function AnimatedBg() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Throttle para optimizar rendimiento
-  const throttle = useCallback((func, limit) => {
-    let inThrottle;
-    return function () {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
+  // Función simple para manejar movimiento
+  const handleMovement = useCallback((e) => {
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    let x, y;
+
+    // Manejar mouse y touch de forma simple
+    if (e.touches && e.touches[0]) {
+      x = e.touches[0].clientX - rect.left;
+      y = e.touches[0].clientY - rect.top;
+    } else {
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+    }
+
+    // Solo actualizar si está dentro del contenedor
+    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+      setMousePosition({ x, y });
+    }
   }, []);
 
-  // Manejar movimiento del mouse/touch optimizado
-  const handleMovement = useCallback(
-    throttle(
-      (e) => {
-        if (containerRef.current) {
-          const rect = containerRef.current.getBoundingClientRect();
-          let x, y;
-
-          // Manejar tanto mouse como touch
-          if (e.touches && e.touches[0]) {
-            x = e.touches[0].clientX - rect.left;
-            y = e.touches[0].clientY - rect.top;
-          } else {
-            x = e.clientX - rect.left;
-            y = e.clientY - rect.top;
-          }
-
-          // Solo actualizar si está dentro del contenedor
-          if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            setMousePosition({ x, y });
-          }
-        }
-      },
-      isMobile ? 50 : 16
-    ),
-    [isMobile]
-  ); // Throttle más agresivo en móviles
-
   useEffect(() => {
-    // Agregar listeners para mouse y touch
-    document.addEventListener("mousemove", handleMovement);
-    document.addEventListener("touchmove", handleMovement, { passive: true });
-
-    return () => {
-      document.removeEventListener("mousemove", handleMovement);
-      document.removeEventListener("touchmove", handleMovement);
-    };
-  }, [handleMovement]);
+    // Usar solo mousemove para desktop y touchstart para móviles (más simple)
+    if (isMobile) {
+      document.addEventListener("touchstart", handleMovement, {
+        passive: true,
+      });
+      return () => document.removeEventListener("touchstart", handleMovement);
+    } else {
+      document.addEventListener("mousemove", handleMovement);
+      return () => document.removeEventListener("mousemove", handleMovement);
+    }
+  }, [handleMovement, isMobile]);
 
   // Configuraciones optimizadas según el dispositivo
   const config = {
